@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>如何实现千位分隔符：将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function commafy(num){
+			    return num && num.toString()
+			        .replace(/(\d)(?=(\d{3})+\.)/g, function(match, p1){ // ！replace函数：把正则匹配到的值用函数的返回值来替换
+			            return match + ',';
+			        });
+			}
+		</script>
+	</body>
+</html>

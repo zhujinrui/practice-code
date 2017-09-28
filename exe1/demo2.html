@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点击li实现输出不同的值</title>
+		<style type="text/css">
+			
+		</style>
+		
+	</head>
+	<body>
+		<!--<ul>
+			<li class="clickBox"></li>
+			<li class="clickBox"></li>
+			<li class="clickBox"></li>
+			<li class="clickBox"></li>
+			<li class="clickBox"></li>
+		</ul>-->
+		<!--<script type="text/javascript">
+			function iteratorFactory(i){
+			    var onclick = function(e){
+			        console.log(i)
+			    }
+			    return onclick;
+			}
+			var clickBoxs = document.querySelectorAll('.clickBox')
+			for (var i = 0; i < clickBoxs.length; i++){
+			    clickBoxs[i].onclick = iteratorFactory(i)
+			}
+		</script>-->
+		  <!--li节点的onclick事件都能正确的弹出当前被点击的li索引-->
+         <ul id="testUL">
+            <li> index = 0</li>
+            <li> index = 1</li>
+            <li> index = 2</li>
+            <li> index = 3</li>
+        </ul>
+        <script type="text/javascript">
+              var nodes = document.getElementsByTagName("li");
+            for(i = 0;i<nodes.length;i+= 1){
+                nodes[i].onclick = (function(i){
+                          return function() {
+                             console.log(i);
+                          } //不用闭包的话，值每次都是4
+                        })(i);
+            }
+        </script>
+	</body>
+</html>

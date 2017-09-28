@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>add(2)(3),add(2,3)</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function add() {
+			    var arg = [].slice.call(arguments);
+			    // 边界条件
+			    if (!isNum(arg[0]) || arg.length === 2 && !isNum(arg[1])) return;
+			    if (arg.length === 2) {
+			        // 直接返回两数的和
+			        return arg[0] + arg[1];
+			    }
+			    // 返回匿名函数，接收下一个参数
+			    return function(next) {
+			        if (isNum(next)) {
+			            return arg[0] + next;
+			        }
+			        // 可以不写 else，因为如果不声明返回值，那么返回的就是 undefined
+			    }
+			    function isNum(e) {
+			        return typeof e === 'number' && isFinite(e);
+			    }
+			}
+			console.log(add(2,3));
+		</script>
+		
+	</body>
+</html>

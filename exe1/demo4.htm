@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>求一个字符串中出现次数最多的字符</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "zhaochucichuzuiduodezifu";
+			var o = {};
+			for (var i = 0, length = str.length; i < length; i++) {
+			// var char = str[i];
+			var char = str.charAt(i); //char存储字符串中的字符
+			if (o[char]) { //char就是对象o的一个属性，o[char]是属性值，o[char]控制出现的次数
+			o[char]++; //次数加1
+			} else {
+			o[char] = 1; //若第一次出现，次数记为1
+			}
+			}
+			console.log(o); //输出的是完整的对象，记录着每一个字符及其出现的次数
+			//遍历对象，找到出现次数最多的字符和次数
+			var max = 0;
+			var maxChar = null;
+			for (var key in o) {
+			if (max < o[key]) {
+			max = o[key]; //max始终储存次数最大的那个
+			maxChar = key; //那么对应的字符就是当前的key
+			}
+			}
+			console.log("最多的字符是" + maxChar);
+			console.log("出现的次数是" + max);
+		</script>
+	</body>
+</html>
